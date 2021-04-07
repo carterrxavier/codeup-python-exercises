@@ -70,3 +70,49 @@ qualify(Customer1)
 qualify(Customer2)
 qualify(Customer3)
 print('------------------')
+
+#5  Create a variable that holds a boolean value for each of the following conditions:
+# the password must be at least 5 characters
+# the username must be no more than 20 characters
+# the password must not be the same as the username
+# bonus neither the username or password can start or end with whitespace
+
+
+password_min_length = 5
+username_max_length = 20
+invalidCharacters = [' ']
+
+currentUser1 = {'username':'codeup', 'password': 'notastrongpassword'}
+currentUser2 = {'username':'codeup', 'password': 'codeup'}
+currentUser3 = {'username':'codeupjhbguguyguyguyguygcniubhuinub', 'password': 'codeup'}
+currentUser4 = {'username':' codeup ', 'password': 'codeup'}
+
+def validate(currentUser):
+    if(len(currentUser['password']) < password_min_length):
+        print('password too short')
+        return False
+    if (len(currentUser['username']) > username_max_length):
+        print('username too long')
+        return False
+    if (currentUser['username'] == currentUser['password']):
+        print('password and username cannot be the same')
+        return False
+    if(invalidCharacters[0]  in currentUser['username']):
+        print('white space in username detected')
+        return False
+    else:
+        print('Succcess!')
+        return True
+
+validate(currentUser1)
+validate(currentUser2)
+validate(currentUser3)
+validate(currentUser4)
+
+
+
+
+
+
+
+
