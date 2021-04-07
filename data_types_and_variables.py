@@ -60,7 +60,8 @@ Customer2 = {'name':'David', 'items_purchased': 2, 'expired': False, 'premium_me
 Customer3 = {'name':'Xavier','items_purchased': 1, 'expired': False, 'premium_member': True}
 
 def qualify(currentCustomer):
-    if((currentCustomer['items_purchased'] > product_offer_after_this_purchase_amount and currentCustomer['expired'] == False) or currentCustomer['premium_member'] == True):
+    if((currentCustomer['items_purchased'] > product_offer_after_this_purchase_amount 
+        and currentCustomer['expired'] == False) or currentCustomer['premium_member'] == True):
         print ('{} has qualified for product offer'.format(currentCustomer['name']))
     else:
         print ('{} has not qualified for product offer'.format(currentCustomer['name']))
