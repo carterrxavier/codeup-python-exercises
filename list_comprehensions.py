@@ -24,6 +24,7 @@ ex1 = [fruit.upper() for fruit  in fruits]
 
 # Exercise 2 - create a variable named capitalized_fruits and use list comprehension syntax to produce output like ['Mango', 'Kiwi', 'Strawberry', etc...]
 capitalized_fruits = [fruit.title() for fruit  in fruits]
+ 
 
 # Exercise 3 - Use a list comprehension to make a variable named fruits_with_more_than_two_vowels. Hint: You'll need a way to check if something is a vowel.
 def count_vowels(x):
@@ -35,6 +36,7 @@ def count_vowels(x):
     return count
 
 fruits_with_more_than_two_vowels = [fruit for fruit in fruits if count_vowels(fruit) > 2]
+
 
 # Exercise 4 - make a variable named fruits_with_only_two_vowels. The result should be ['mango', 'kiwi', 'strawberry']
 
@@ -111,3 +113,7 @@ odd_numbers_negative = [number for number in numbers if number % 2 == 1 and numb
 
 # Exercise 17 - Make a variable named numbers_plus_5. In it, return a list containing each number plus five. 
 numbers_plus_5 = [number + 5 for number in numbers]
+
+print('type here')
+x = raw_input()
+print(x)
