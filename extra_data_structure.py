@@ -206,4 +206,77 @@ for student in students:
         print('{} has {} pets'.format(student['student'],len(student['pets'])))
 
 
+#7 how many students are in web development, data science
+web_count = 0
+ds_count = 0
+for student in students:
+    if student['course'] == 'web development':
+        web_count += 1
+    elif student['course'] == 'data science':
+        ds_count += 1
+print('{} students are in web development'.format(web_count))
+print('{} students are in data science'.format(ds_count))
+
+
+
+#8 what is the avg number of pets for students in web development 
+pet_count = 0
+student_count = 0
+for student in students:
+    if student['course'] == 'web development':
+        pet_count = pet_count + len(student['pets'])
+        student_count += 1
+avg = int(pet_count / student_count)
+print('The avg number of pets for students in web development is {}'.format(avg))
+
+
+#9 what is the avg pet age for students in data science
+sum_of_age = 0
+num_of_pets = 0 
+for student in students: 
+    if student['course'] == 'data science':
+        for pets in student['pets']:
+            sum_of_age += pets['age']
+        num_of_pets += len(student['pets'])
+avg = int(sum_of_age / num_of_pets)
+print('The avg pet age for students in data science is {}'.format(avg))
+
+
+#10 what is the most frequent coffee preference for data science students
+list_of_unique_coffee_types = []
+list_of_all_coffees = []
+
+#list of unique coffee types for data science students
+for student in students: 
+    if student['course'] == 'data science':
+        if student['coffee_preference'] not in list_of_unique_coffee_types:
+            list_of_unique_coffee_types.append(student['coffee_preference'])
+
+# get all coffees for data science students
+for student in students: 
+    if student['course'] == 'data science':
+            list_of_all_coffees.append(student['coffee_preference'])
+
+#compare both lists 
+count = 0
+for i in list_of_unique_coffee_types:
+    for j in list_of_all_coffees:
+        if i == j:
+            count += 1
+    if(count == 1):
+        print("{} data science student prefers {} coffee".format(count, i))
+    else:
+        print("{} data science students prefer {} coffee".format(count,i))
+    count = 0
+
+
+
+
+
+
+
+
+
+
+
 
