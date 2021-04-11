@@ -126,6 +126,8 @@ students = [
 print('There are {} students'.format(len(students)))
 
 #2 how many students prefer different coffee types?
+print('#######################################################')
+
 count = 0
 for student in students:
     if student['coffee_preference'] == 'light':
@@ -144,7 +146,9 @@ print('{} people prefer dark coffee '.format(count))
 
 #3
 #How many types of each pet are there
-#get list of all pets
+print('#######################################################')
+
+#tge list of all pets
 list_of_all_species = []
 for student in students:
     for species in student['pets']:
@@ -169,7 +173,7 @@ for i in list_of_unique_species:
         print("There are {} {}s".format(count, i))
     count = 0
 
-
+print('#######################################################')
 #4 how many grades does each student have
 same_grade_count = False
 grade_count = 0
@@ -187,7 +191,7 @@ else:
     print("Every student doesnt have the same number of grades")
 
 
-
+print('#######################################################')
 #5 what is each students avg
 for student in students:
     total = sum(student['grades'])
@@ -195,7 +199,7 @@ for student in students:
     avg = total/grades
     print('{} has an avg of {}'.format(student['student'], avg))
 
-
+print('#######################################################')
 #6 how many pets does each student have
 for student in students:
     if (len(student['pets']) )== 0:
@@ -205,6 +209,7 @@ for student in students:
     else:
         print('{} has {} pets'.format(student['student'],len(student['pets'])))
 
+print('#######################################################')
 
 #7 how many students are in web development, data science
 web_count = 0
@@ -217,7 +222,7 @@ for student in students:
 print('{} students are in web development'.format(web_count))
 print('{} students are in data science'.format(ds_count))
 
-
+print('#######################################################')
 
 #8 what is the avg number of pets for students in web development 
 pet_count = 0
@@ -228,6 +233,8 @@ for student in students:
         student_count += 1
 avg = int(pet_count / student_count)
 print('The avg number of pets for students in web development is {}'.format(avg))
+
+print('#######################################################')
 
 
 #9 what is the avg pet age for students in data science
@@ -240,6 +247,8 @@ for student in students:
         num_of_pets += len(student['pets'])
 avg = int(sum_of_age / num_of_pets)
 print('The avg pet age for students in data science is {}'.format(avg))
+
+print('#######################################################')
 
 
 #10 what is the most frequent coffee preference for data science students
@@ -257,26 +266,186 @@ for student in students:
     if student['course'] == 'data science':
             list_of_all_coffees.append(student['coffee_preference'])
 
-#compare both lists 
+#compare both lists , get the max from list of dictonaries
 count = 0
+coffee_with_count_list = []
 for i in list_of_unique_coffee_types:
     for j in list_of_all_coffees:
         if i == j:
             count += 1
-    if(count == 1):
-        print("{} data science student prefers {} coffee".format(count, i))
-    else:
-        print("{} data science students prefer {} coffee".format(count,i))
-    count = 0
+    coffee_with_count_list.append({"coffee": i, 'count': count})
+newlist = sorted(coffee_with_count_list, key=lambda k: k['count'], reverse=True) 
+print('{} coffee is the most popular among data science students'.format(newlist[0]['coffee']))
+
+
+print('#######################################################')
+
+#11 what is the least frequent coffee preference for web development students
+list_of_unique_coffee_types = []
+list_of_all_coffees = []
+
+#list of unique coffee types for web develpoer students
+for student in students: 
+    if student['course'] == 'web development':
+        if student['coffee_preference'] not in list_of_unique_coffee_types:
+            list_of_unique_coffee_types.append(student['coffee_preference'])
+
+# get all coffees for web developer students
+for student in students: 
+    if student['course'] == 'web development':
+            list_of_all_coffees.append(student['coffee_preference'])
+
+#compare both lists , get the min from list of dictonaries
+count = 0
+coffee_with_count_list = []
+for i in list_of_unique_coffee_types:
+    for j in list_of_all_coffees:
+        if i == j:
+            count += 1
+    coffee_with_count_list.append({"coffee": i, 'count': count})
+newlist = sorted(coffee_with_count_list, key=lambda k: k['count']) 
+print('{} coffee is the least popular among web developer students'.format(newlist[0]['coffee']))
+
+print('#######################################################')
 
 
 
+#12 What is the average grade for students with at least 2 pets?
+total = 0
+grades = 0
+num_12_avg = 0
+for student in students:
+    if len(student['pets']) >= 2:
+        total = total + sum(student['grades'])
+        grades =  grades + len(student['grades'])
+        num_12_avg = int(total/grades)
+print('{} is the Average grade for students with at least 2 pets'.format(num_12_avg) )
+
+print('#######################################################')
+
+#13 how many students have 3 pets
+count = 0
+for student in students:
+    if len(student['pets']) == 3:
+        count += 1
+if count == 1:
+    print('{} student has 3 pets'.format(count))
+else:
+    print('{} students have 3 pets'.format(count))
 
 
+print('#######################################################')
 
 
+#14
+total = 0
+grades = 0
+num_14_avg = 0
+for student in students:
+    if len(student['pets']) == 0:
+        total += sum(student['grades'])
+        grades += len(student['grades'])
+        num_14_avg = int(total/grades)
+print('{} is the average grade for students with no pets'.format(num_14_avg))
+
+print('#######################################################')
+
+#15 What is the average grade for web development students? data science students?
+total = 0
+total2 = 0
+grades = 0
+grades2 =0
+num_15_avg = 0
+num_15_avg2 = 0
+for student in students:
+    if student['course'] == 'web development':
+        total+= sum(student['grades'])
+        grades += len(student['grades'])
+        num_15_avg = int(total/grades)
+    elif student['course'] == 'data science':
+        total2 += sum(student['grades'])
+        grades2 += len(student['grades'])
+        num_15_avg2 = int(total2/grades2)
+print('{} is the average grade for web development students'.format(num_15_avg))
+print('{} is the average grade for data science students'.format(num_15_avg2))
+
+print('#######################################################')
 
 
+#16 What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
+avg_list = []
+num_16_total = 0
+num_16_grade = 0
+num_16_avg = 0
+for student in students:
+    if student['coffee_preference'] == 'dark':
+        num_16_total += sum(student['grades'])
+        num_16_grade += len(student['grades'])
+        num_16_avg = (num_16_total / num_16_grade)
+        avg_list.append(num_16_avg)
+print('{} is the average range of dark coffee drinkers'.format(max(avg_list) - min(avg_list)))
+    
+
+
+print('#######################################################')
+#17 What is the average number of pets for medium coffee drinkers?
+num_17_pet_count = 0
+num_17_student_count = 0
+for student in students:
+    if student['coffee_preference'] == 'medium':
+        num_17_pet_count += len(student['pets'])
+        num_17_student_count +=1
+print('{} is the average number of pets for medium coffee drinkers'.format(int(num_17_pet_count/num_17_student_count)))
+
+print('#######################################################')
+#18 What is the most common type of pet for web development students?
+
+
+#the list of all pets for web developers
+num_18_list_of_all_species = []
+for student in students:
+    for species in student['pets']:
+            if student['course'] == 'web development':
+                num_18_list_of_all_species.append(species['species']) 
+
+#list of unique pets to compare
+num_18_list_of_unique_species =[]
+for student in students:
+    for species in student['pets']:
+            if species['species'] not in num_18_list_of_unique_species:
+                num_18_list_of_unique_species.append(species['species']) 
+#compare both lists
+num_18_count = 0
+pets_for_wd = []
+for i in num_18_list_of_unique_species:
+    for j in num_18_list_of_all_species:
+        if i == j:
+            count += 1
+    pets_for_wd.append({"pet": i, 'count': count})
+print (pets_for_wd)
+newlist = sorted(pets_for_wd, key=lambda k: k['count'], reverse=True) 
+print('{}s are the most popular pet among web developers'.format(newlist[0]['pet']))
+
+
+print('#######################################################')
+
+#19 What is the average name length?
+num_19_total = 0
+num_19_students = 0
+for student in students:
+    num_19_total += len(student['student'].replace(' ', ''))
+    num_19_students += 1
+print('{} is the average length of the student\'s names'.format(int(num_19_total/num_19_students)))
+
+print('#######################################################')
+
+#20 What is the highest pet age for light coffee drinkers?''
+num_20_list_of_all_species = []
+for student in students:
+    if student['coffee_preference'] == 'light':
+        print(student['pets'])
+        
+ 
 
 
 
