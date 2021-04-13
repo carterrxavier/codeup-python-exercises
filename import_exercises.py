@@ -54,21 +54,16 @@ print('${:,.2f} is the grand balance for all users'.format(grand_total))
 print('${:,.2f} is the avg balence for the dataset'.format(grand_total/w ))
 
 
-#user with the lowest balance
+#user with the lowest balance and highest balance
 for user in dataset:
     balance = user['balance']
     adj_balance = balance.replace("$",'').replace(',','')
     user['balance'] =  float(adj_balance)
-lowest = min(dataset, key=lambda k:k['balance'])
-print('{} has the lowest balence'.format(lowest['name']))
+lowest = sorted(dataset, key=lambda k:k['balance'])
+print('{} has the balance with {}'.format(lowest[0]['name'], lowest[0]['balance'])) 
 
-
-#user with the highest balance
-for user in dataset:
-      balance = user['balance']
-      user['balance'] =  float(adj_balance)
-highest = max(dataset, key=lambda k:k['balance'])
-print('{} has the higest balence'.format(highest['name']))
+highest = sorted(dataset, key=lambda k:k['balance'], reverse=True)
+print('{} has the highest balence with {}'.format(highest[0]['name'], highest[0]['balance']))
 
 
 #most and least common fruit
@@ -106,7 +101,7 @@ for user in dataset:
 print('{} unread messages '.format(sum(numbers)))
 
 
-    
+
     
 
 
