@@ -59,11 +59,11 @@ for user in dataset:
     balance = user['balance']
     adj_balance = balance.replace("$",'').replace(',','')
     user['balance'] =  float(adj_balance)
-lowest = sorted(dataset, key=lambda k:k['balance'])
-print('{} has the balance with {}'.format(lowest[0]['name'], lowest[0]['balance'])) 
+lowest = min(dataset, key=lambda k:k['balance'])
+print('{} has the balance with {}'.format(lowest['name'], lowest['balance'])) 
 
-highest = sorted(dataset, key=lambda k:k['balance'], reverse=True)
-print('{} has the highest balence with {}'.format(highest[0]['name'], highest[0]['balance']))
+highest = max(dataset, key=lambda k:k['balance'])
+print('{} has the highest balance with {}'.format(highest['name'], highest['balance']))
 
 
 #most and least common fruit
